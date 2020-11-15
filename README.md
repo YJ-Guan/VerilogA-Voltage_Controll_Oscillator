@@ -102,13 +102,13 @@ endmodule
 
 The simulation result while the input voltage is 0V and the jitter is not considered is shown in Fig.1. The generator outputs the periodical pulse signals with period of 500 ps. To test the voltage control of the oscillator, a 6-V sinusoid wave is applied at the input of the VCO. The output waveform is shown in Fig.2. The output frequency changes with the changing of input voltage.
 
-<img src="Fig/vco_2.bmp" style="zoom:40%;" />
+<img src="./Fig/vco_2.bmp" style="zoom:40%;" />
 
 <center><b>Fig.1</b>    The output waveform while the input voltage is 0V and the jitter is not considered. </center>
 
 
 
-<img src="Fig/vco_1.bmp" style="zoom:40%;" />
+<img src="./Fig/vco_1.bmp" style="zoom:40%;" />
 
 <center><b>Fig.2</b>    The output waveform while the input voltage is sinusoid wave with magnitude of 6V. </center>
 
@@ -116,13 +116,13 @@ The simulation result while the input voltage is 0V and the jitter is not consid
 
 After that the jitter is added in the module, the uncertainty is taken into consideration in time domain. Fig.3 shows the output waveform of the VCO  with 0.2-ns normally distributed jitter. To further demonstrate the effect of the jitter,  a eye diagram is performed for the VCO with 10-ps normally distributed jitter as shown in Fig.4. The jitter adds the uncertainty of the arriving time of the output edge.
 
-<img src="Fig/jitter_200ps.bmp" style="zoom: 40%;" />
+<img src="./Fig/jitter_200ps.bmp" style="zoom: 40%;" />
 
 <center><b>Fig.3</b>    The output waveform with 0.2-ns normally distributed jitter.  </center>
 
 
 
-<img src="Fig/jitter.bmp" style="zoom:40%;" />
+<img src="./Fig/jitter.bmp" style="zoom:40%;" />
 
 <center><b>Fig.4</b>    The eye diagram for the output waveform with 10-ps normally distributed jitter. </center>
 
