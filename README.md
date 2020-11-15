@@ -1,6 +1,6 @@
 ## <center> Verilog-A Modeling: Voltage Controlled Oscillator</center>
 
-<center><b>Name</b>: Yujiang Guan）          <b>E-Mail</b>: guanyj@stu.pku.edu.cn </center>
+<center><b>Name</b>: Yujiang Guan          <b>E-Mail</b>: guanyj@stu.pku.edu.cn </center>
 
 ### Part 1 - Analysis
 
