@@ -4,7 +4,14 @@
 module VCO  (vin,vout);
 	input vin; voltage vin;
 	output vout; voltage vout;
-	
+
+/************ Accessable Parameters *********/
+
+	parameter real vout_amp = 1;	// output supply [V]
+	parameter real fc = 2e9;	// frequency at 0V input [Hz]
+	parameter real gain = 200e6;	// vco voltage gain [Hz/V]
+	parameter real ds = 0.5		// output duty cycle [-]
+
 /************* Internal Parameter ***********/
 	real phase;
 	real phase_ideal;
@@ -26,10 +33,7 @@ module VCO  (vin,vout);
 	analog begin
 		@(initial_step) 
 		begin
-			fc = 2G;
-			gain = 200M;
 			seed = 100;
-			vout_amp = 1;
 			ttol = 1n/2G;
 			vtol = 1f;
 		end
@@ -40,14 +44,14 @@ module VCO  (vin,vout);
 		phase = 2*`M_PI*idtmod (fout,0,1,0)-`M_PI;
 		phase_ideal = 2*`M_PI*idtmod (f_ideal,0,1,0)-`M_PI;
 	
-		@(cross(phase + `M_PI/2,+1,ttol,vtol) 
-				or cross(phase - `M_PI/2,+1,ttol,vtol))
+		@(cross(phase + `M_PI*ds,+1,ttol,vtol) 
+				or cross(phase - `M_PI*ds,+1,ttol,vtol))
 		begin 	// output square wave
-			vout_r = (phase >= -`M_PI/2) && (phase <= `M_PI/2);
+			vout_r = (phase >= -`M_PI*ds) && (phase <= `M_PI*ds);
 		end
 		
-		@(cross(phase_ideal + `M_PI/2,+1,ttol,vtol) 
-				or cross(phase_ideal - `M_PI/2,+1,ttol,vtol))
+		@(cross(phase_ideal + `M_PI*ds,+1,ttol,vtol) 
+				or cross(phase_ideal - `M_PI*ds,+1,ttol,vtol))
 		begin 	// jitter calculation
 			dT = 1.414 * jitter * $rdist_normal(seed,0,1);
 			fout = f_ideal * (1 + dT*f_ideal);
