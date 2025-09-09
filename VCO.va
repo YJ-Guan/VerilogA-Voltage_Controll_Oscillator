@@ -10,19 +10,19 @@ module VCO  (vin,vout);
 	parameter real vout_amp = 1;	// output supply [V]
 	parameter real fc = 2e9;	// frequency at 0V input [Hz]
 	parameter real gain = 200e6;	// vco voltage gain [Hz/V]
-	parameter real ds = 0.5		// output duty cycle [-]
+	parameter real ds = 0.5;	// output duty cycle [-]
+	parameter real jitter = 0;	// jitter [s]
 
 /************* Internal Parameter ***********/
 	real phase;
 	real phase_ideal;
 	real fc; 		// initial freq
 	real fout;		// real output freq
-	real f_ideal;	//freq without jitter
+	real f_ideal;		// freq without jitter
 	real dT;
-	real jitter = 10p;
 	real gain; 		// vco voltage gain
 	real vout_r;
-	real vout_amp;	//	output voltage magnitude
+	real vout_amp;		//output voltage magnitude
 	real ttol;
 	real vtol;
 	integer min_pts_update = 64;
